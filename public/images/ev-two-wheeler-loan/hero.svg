@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#052F5F"/>
+  <!-- EV Scooter -->
+  <ellipse cx="400" cy="350" rx="180" ry="100" fill="#F37E20" opacity="0.1"/>
+  <!-- Body -->
+  <path d="M280 320 Q350 250 420 280 L450 320 Q420 360 350 360 Z" fill="#F37E20"/>
+  <!-- Seat -->
+  <ellipse cx="380" cy="290" rx="50" ry="15" fill="#333"/>
+  <!-- Front -->
+  <rect x="430" y="280" width="20" height="80" rx="5" fill="#F37E20"/>
+  <!-- Handle -->
+  <rect x="440" y="260" width="40" height="8" rx="4" fill="#666"/>
+  <!-- Wheels -->
+  <circle cx="300" cy="380" r="40" fill="#333"/>
+  <circle cx="300" cy="380" r="20" fill="#666"/>
+  <circle cx="460" cy="380" r="35" fill="#333"/>
+  <circle cx="460" cy="380" r="17" fill="#666"/>
+  <!-- Battery indicator -->
+  <rect x="550" y="250" width="120" height="60" rx="8" fill="#fff" opacity="0.1"/>
+  <path d="M570 280 L590 280 L590 270 L610 290 L590 310 L590 300 L570 300 Z" fill="#4CAF50"/>
+  <text x="640" y="295" font-family="Arial" font-size="14" fill="#4CAF50">EV</text>
+  <!-- Text -->
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle" font-weight="bold">EV Two-Wheeler Loan</text>
+  <text x="400" y="520" font-family="Arial, sans-serif" font-size="18" fill="#F37E20" text-anchor="middle">Starting 8.5% p.a.</text>
+</svg>

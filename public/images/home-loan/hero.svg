@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#052F5F"/>
+  <!-- House -->
+  <path d="M400 150 L550 280 L550 450 L250 450 L250 280 Z" fill="#F37E20" opacity="0.2"/>
+  <path d="M400 150 L550 280 L250 280 Z" fill="#F37E20"/>
+  <!-- House front -->
+  <rect x="280" y="300" width="240" height="150" fill="#fff" opacity="0.1"/>
+  <!-- Door -->
+  <rect x="360" y="350" width="80" height="100" rx="5" fill="#F37E20" opacity="0.8"/>
+  <circle cx="420" cy="400" r="5" fill="#fff"/>
+  <!-- Windows -->
+  <rect x="300" y="320" width="50" height="50" rx="3" fill="#87CEEB" opacity="0.6"/>
+  <rect x="450" y="320" width="50" height="50" rx="3" fill="#87CEEB" opacity="0.6"/>
+  <!-- Chimney -->
+  <rect x="480" y="180" width="30" height="60" fill="#F37E20" opacity="0.6"/>
+  <!-- Key icon -->
+  <g transform="translate(580, 280)">
+    <circle cx="30" cy="30" r="20" stroke="#F37E20" stroke-width="4" fill="none"/>
+    <rect x="45" y="25" width="50" height="10" rx="3" fill="#F37E20"/>
+    <rect x="80" y="35" width="10" height="15" fill="#F37E20"/>
+    <rect x="65" y="35" width="10" height="10" fill="#F37E20"/>
+  </g>
+  <!-- Text -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle" font-weight="bold">Home Loan</text>
+  <text x="400" y="540" font-family="Arial, sans-serif" font-size="18" fill="#F37E20" text-anchor="middle">Starting 8.5% p.a.</text>
+</svg>

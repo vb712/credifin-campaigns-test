@@ -1,0 +1,162 @@
+[
+    {
+        "id": "e-rickshaw-loan",
+        "slug": "e-rickshaw-loan",
+        "title": "E-Rickshaw Loan",
+        "hero": {
+            "image": "/e-rickshaw-loan/e-rickshawhdr.png",
+            "heading": "Go Green, Go Far with Hassle-Free E-Rickshaw Loan",
+            "subheading": "Discover a seamless way to grow your business and protect the environment simultaneously.",
+            "cta_text": "Check Eligibility"
+        },
+        "product_highlights": {
+            "interest_rate": "16% - 20%",
+            "max_amount": "₹1.20 Lakh",
+            "tenure": "Up to 24 Months",
+            "processing_time": "2-3 Days"
+        },
+        "calculator_config": {
+            "min_amount": 50000,
+            "max_amount": 150000,
+            "default_amount": 100000,
+            "min_rate": 16,
+            "max_rate": 20,
+            "default_rate": 18,
+            "min_tenure": 1,
+            "max_tenure": 2
+        },
+        "features": [
+            {
+                "title": "Quick and Easy Approval",
+                "desc": "Simple application process with minimal documentation and fast verification.",
+                "image": "/e-rickshaw-loan/apply-loan-vector.png"
+            },
+            {
+                "title": "E-Rickshaw Business Boost",
+                "desc": "Enabling new purchases leading to higher earnings & improved livelihoods for entrepreneurs.",
+                "image": "/e-rickshaw-loan/e-rickshaw-icon.png"
+            },
+            {
+                "title": "Lower Operating Costs",
+                "desc": "Save heavily on fuel expenses compared to petrol/diesel vehicles.",
+                "image": "/e-rickshaw-loan/e-v-loan.jpg"
+            },
+            {
+                "title": "Environment Friendly",
+                "desc": "Zero emissions, reduce pollution. Support green transport.",
+                "image": "/e-rickshaw-loan/e-rickshaw-loan.jpg"
+            },
+            {
+                "title": "Ease of Maintenance",
+                "desc": "Enhance longevity and reduce maintenance expenses with a well-maintained vehicle.",
+                "image": "/e-rickshaw-loan/customer-care.png"
+            },
+            {
+                "title": "Business Independence",
+                "desc": "Drivers are not tied to employers, gaining freedom in business operations.",
+                "image": "/e-rickshaw-loan/credifin.png"
+            }
+        ],
+        "process_steps": [
+            {
+                "title": "Check Eligibility",
+                "desc": "Check criteria before applying to ensure approval possibilities.",
+                "icon": "UserCheck"
+            },
+            {
+                "title": "Calculate Your EMI",
+                "desc": "Estimate your monthly EMI effortlessly with our calculator.",
+                "icon": "Calculator"
+            },
+            {
+                "title": "Check Required Documents",
+                "desc": "Ensure which necessary documents are required.",
+                "icon": "FileText"
+            },
+            {
+                "title": "Fill Application Form",
+                "desc": "Provide accurate info for prompt processing.",
+                "icon": "PenTool"
+            }
+        ],
+        "eligibility_criteria": [
+            "Age: 18 to 60 years",
+            "Valid License to operate the vehicle",
+            "Permit from appropriate authority to ply vehicle",
+            "CIBIL Score: Above 650 or -1 (New to Credit)",
+            "Owned House Proof is mandatory",
+            "Customer should not be in debt"
+        ],
+        "documents_required": [
+            "Application Form: Providing personal and financial information",
+            "KYC (ID & Address): Aadhaar Card, PAN Card, Voter ID, or Driving License",
+            "Income Proof: Bank statements, salary slips, or ITR",
+            "Bank Statements: To assess financial health",
+            "Passport-sized Photographs: Recent photos of applicant",
+            "Vehicle Documents: Registration details, insurance papers, and permit",
+            "Credit History: Check of credit report"
+        ],
+        "faqs": [
+            {
+                "q": "Who can apply for an E-rickshaw loan?",
+                "a": "Anyone with min. Age of 18 years and max. 60 years can apply for e-rickshaw loan."
+            },
+            {
+                "q": "What is the maximum loan amount I can get?",
+                "a": "Maximum loan amount is ₹1.20 Lac."
+            },
+            {
+                "q": "What are the interest rates?",
+                "a": "ROI will be 16% to 20%."
+            },
+            {
+                "q": "What is the repayment tenure?",
+                "a": "Tenure will be up to 24 months depending upon the model of the e-rickshaw."
+            },
+            {
+                "q": "Are there any down payment requirements?",
+                "a": "Yes, downpayment is required. 30% to 35% of the value of vehicle."
+            },
+            {
+                "q": "How do I apply for an E-rickshaw loan?",
+                "a": "1. Visit nearest branch or dealer point. 2. Apply online: Fill contact details -> Get call back -> Document verification."
+            },
+            {
+                "q": "How long does it take to get approved?",
+                "a": "It takes 2-3 days for the whole process."
+            },
+            {
+                "q": "Can I change my EMI date?",
+                "a": "No. EMI dates are fixed (1st, 5th, and 11th). You cannot change it after disbursement."
+            },
+            {
+                "q": "What factors do lenders consider?",
+                "a": "CIBIL Above 650, Owned house proof, No excessive debt, Good repayment habit."
+            },
+            {
+                "q": "Can I get a loan if I have a low credit score?",
+                "a": "Generally no, but we can consider cases with genuine reasons after senior authority approval."
+            },
+            {
+                "q": "Do E-rickshaw loans come with additional benefits?",
+                "a": "Yes, we provide Loan Suraksha and Hospi Care (2 persons) for 1 year."
+            },
+            {
+                "q": "Can I use the loan for a USED E-rickshaw?",
+                "a": "Yes, it can be used for used e-rickshaw loans."
+            },
+            {
+                "q": "Can I prepay the loan?",
+                "a": "Yes, customers can prepay the E-rickshaw loan."
+            },
+            {
+                "q": "What happens if I miss a repayment?",
+                "a": "Bouncing charges are applicable if you miss a repayment."
+            },
+            {
+                "q": "Can I restructure my loan if I face difficulties?",
+                "a": "Yes, the loan can be restructured as per convenience after settling the running loan with approval."
+            }
+        ]
+    }
+]

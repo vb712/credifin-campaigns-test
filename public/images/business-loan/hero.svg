@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#052F5F"/>
+  <!-- Building/Shop -->
+  <rect x="200" y="180" width="250" height="270" fill="#F37E20" opacity="0.2"/>
+  <rect x="200" y="180" width="250" height="50" fill="#F37E20"/>
+  <!-- Store front -->
+  <rect x="220" y="250" width="90" height="120" fill="#87CEEB" opacity="0.4"/>
+  <rect x="340" y="250" width="90" height="120" fill="#87CEEB" opacity="0.4"/>
+  <!-- Door -->
+  <rect x="280" y="370" width="60" height="80" fill="#F37E20" opacity="0.6"/>
+  <!-- Sign -->
+  <rect x="250" y="200" width="150" height="30" rx="5" fill="#fff" opacity="0.2"/>
+  <!-- Growth chart -->
+  <g transform="translate(500, 200)">
+    <rect width="180" height="150" rx="10" fill="#fff" opacity="0.1"/>
+    <polyline points="20,120 50,100 80,80 110,50 140,70 160,30" stroke="#4CAF50" stroke-width="4" fill="none"/>
+    <circle cx="160" cy="30" r="8" fill="#4CAF50"/>
+    <!-- Arrow up -->
+    <path d="M160 30 L150 45 L155 45 L155 60 L165 60 L165 45 L170 45 Z" fill="#4CAF50" transform="rotate(180 160 45)"/>
+  </g>
+  <!-- Rupee coins -->
+  <circle cx="550" cy="420" r="30" fill="#F37E20" opacity="0.8"/>
+  <text x="550" y="430" font-family="Arial" font-size="24" fill="#fff" text-anchor="middle">₹</text>
+  <circle cx="600" cy="400" r="25" fill="#F37E20" opacity="0.6"/>
+  <text x="600" y="408" font-family="Arial" font-size="20" fill="#fff" text-anchor="middle">₹</text>
+  <!-- Text -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle" font-weight="bold">Business Loan</text>
+  <text x="400" y="540" font-family="Arial, sans-serif" font-size="18" fill="#F37E20" text-anchor="middle">Starting 12% p.a.</text>
+</svg>

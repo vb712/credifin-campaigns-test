@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#052F5F"/>
+  <!-- Truck/Commercial Vehicle -->
+  <rect x="150" y="250" width="350" height="150" rx="10" fill="#F37E20" opacity="0.3"/>
+  <!-- Cabin -->
+  <rect x="450" y="220" width="150" height="180" rx="10" fill="#F37E20"/>
+  <!-- Windshield -->
+  <rect x="470" y="240" width="110" height="80" rx="5" fill="#87CEEB" opacity="0.6"/>
+  <!-- Door -->
+  <rect x="480" y="340" width="80" height="50" fill="#F37E20" opacity="0.6"/>
+  <circle cx="545" cy="365" r="5" fill="#333"/>
+  <!-- Cargo area -->
+  <rect x="160" y="260" width="280" height="130" fill="#fff" opacity="0.1"/>
+  <text x="300" y="335" font-family="Arial" font-size="24" fill="#F37E20" text-anchor="middle">CARGO</text>
+  <!-- Wheels -->
+  <circle cx="250" cy="420" r="40" fill="#333"/>
+  <circle cx="250" cy="420" r="22" fill="#666"/>
+  <circle cx="380" cy="420" r="40" fill="#333"/>
+  <circle cx="380" cy="420" r="22" fill="#666"/>
+  <circle cx="530" cy="420" r="45" fill="#333"/>
+  <circle cx="530" cy="420" r="25" fill="#666"/>
+  <!-- Headlight -->
+  <rect x="590" y="320" width="20" height="30" rx="5" fill="#FFD700"/>
+  <!-- Rupee badge -->
+  <circle cx="680" cy="250" r="40" fill="#F37E20"/>
+  <text x="680" y="262" font-family="Arial" font-size="32" fill="#fff" text-anchor="middle">₹</text>
+  <!-- Text -->
+  <text x="400" y="510" font-family="Arial, sans-serif" font-size="28" fill="#fff" text-anchor="middle" font-weight="bold">Commercial Vehicle Loan</text>
+  <text x="400" y="550" font-family="Arial, sans-serif" font-size="18" fill="#F37E20" text-anchor="middle">Starting 11% p.a.</text>
+</svg>

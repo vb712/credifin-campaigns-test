@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#052F5F"/>
+  <!-- Graduation cap -->
+  <g transform="translate(300, 150)">
+    <polygon points="100,80 0,40 100,0 200,40" fill="#F37E20"/>
+    <rect x="40" y="40" width="120" height="60" fill="#F37E20" opacity="0.8"/>
+    <rect x="95" y="0" width="10" height="30" fill="#333"/>
+    <circle cx="100" cy="0" r="10" fill="#FFD700"/>
+    <!-- Tassel -->
+    <path d="M100 0 Q130 30 120 80" stroke="#FFD700" stroke-width="4" fill="none"/>
+    <circle cx="120" cy="80" r="8" fill="#FFD700"/>
+  </g>
+  <!-- Books -->
+  <g transform="translate(180, 320)">
+    <rect x="0" y="0" width="120" height="20" rx="2" fill="#4CAF50"/>
+    <rect x="5" y="25" width="120" height="20" rx="2" fill="#2196F3"/>
+    <rect x="0" y="50" width="120" height="20" rx="2" fill="#FF9800"/>
+    <rect x="5" y="75" width="120" height="20" rx="2" fill="#9C27B0"/>
+  </g>
+  <!-- Certificate/Degree -->
+  <g transform="translate(500, 280)">
+    <rect x="0" y="0" width="150" height="100" rx="5" fill="#fff" opacity="0.9"/>
+    <rect x="20" y="20" width="110" height="8" rx="2" fill="#F37E20" opacity="0.5"/>
+    <rect x="30" y="40" width="90" height="5" rx="1" fill="#333" opacity="0.3"/>
+    <rect x="30" y="50" width="90" height="5" rx="1" fill="#333" opacity="0.3"/>
+    <rect x="30" y="60" width="60" height="5" rx="1" fill="#333" opacity="0.3"/>
+    <circle cx="75" cy="85" r="12" fill="#FFD700" opacity="0.8"/>
+  </g>
+  <!-- Student figure -->
+  <circle cx="400" cy="360" r="25" fill="#F37E20" opacity="0.4"/>
+  <ellipse cx="400" cy="420" rx="30" ry="40" fill="#F37E20" opacity="0.4"/>
+  <!-- Lightbulb (ideas) -->
+  <g transform="translate(550, 180)">
+    <path d="M30 0 Q60 0 60 30 Q60 50 45 60 L45 80 L15 80 L15 60 Q0 50 0 30 Q0 0 30 0" fill="#FFD700" opacity="0.8"/>
+    <rect x="15" y="80" width="30" height="10" fill="#666"/>
+    <line x1="30" y1="95" x2="30" y2="70" stroke="#F37E20" stroke-width="2"/>
+  </g>
+  <!-- Text -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle" font-weight="bold">Education Loan</text>
+  <text x="400" y="540" font-family="Arial, sans-serif" font-size="18" fill="#F37E20" text-anchor="middle">Starting 8% p.a.</text>
+</svg>

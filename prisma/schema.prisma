@@ -1,0 +1,64 @@
+// Credifin Bharat Campaign Engine - Prisma Schema
+// Database: Neon (Postgres) with Prisma Adapter
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Lead model for capturing loan applications
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String   @db.VarChar(10)
+  pincode     String   @db.VarChar(6)
+  loanType    String   @map("loan_type")
+  city        String?
+  productSlug String?  @map("product_slug")
+  amount      BigInt?  // Loan amount requested
+  
+  // UTM Tracking
+  utmSource   String?  @map("utm_source")
+  utmMedium   String?  @map("utm_medium")
+  utmCampaign String?  @map("utm_campaign")
+  utmTerm     String?  @map("utm_term")
+  utmContent  String?  @map("utm_content")
+  
+  // Click IDs for offline conversion import
+  gclid       String?  @map("gclid")       // Google Ads Click ID
+  fbclid      String?  @map("fbclid")      // Facebook Click ID
+  
+  // Session tracking
+  referrer    String?  @map("referrer")
+  landingPage String?  @map("landing_page")
+  sessionId   String?  @map("session_id")
+  
+  // Lead scoring
+  leadScore   Int?     @map("lead_score")   // 0-100
+  leadTier    String?  @map("lead_tier")    // hot, warm, cold
+  timeOnPage  Int?     @map("time_on_page") // seconds
+  scrollDepth Int?     @map("scroll_depth") // percentage
+  emiCalcUsed Boolean? @map("emi_calc_used")
+  
+  // Device/Request info
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent")
+  
+  // Status
+  verified    Boolean  @default(false)
+  status      String   @default("new")     // new, contacted, qualified, converted
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([phone])
+  @@index([loanType])
+  @@index([createdAt])
+  @@index([gclid])
+  @@index([leadTier])
+  @@index([status])
+  @@index([phone, productSlug, createdAt(sort: Desc)])
+  @@map("leads")
+}
