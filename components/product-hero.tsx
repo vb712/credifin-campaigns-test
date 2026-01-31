@@ -25,7 +25,7 @@ interface ProductHeroProps {
 
 export function ProductHero({ product, productSlug, contentEn, contentHi }: ProductHeroProps) {
   const { t, locale } = useTranslation();
-  
+
   // Select content based on current locale
   const content = locale === 'hi' ? contentHi : contentEn;
   const heroText = content.heroText;
@@ -33,7 +33,7 @@ export function ProductHero({ product, productSlug, contentEn, contentHi }: Prod
   const displayName = content.displayName;
 
   return (
-    <section className="relative bg-gradient-to-br from-brand-navy via-brand-navy to-brand-navy/90 overflow-hidden">
+    <section id="product-hero" className="relative bg-gradient-to-br from-brand-navy via-brand-navy to-brand-navy/90 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div

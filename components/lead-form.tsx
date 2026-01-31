@@ -53,10 +53,10 @@ export function LeadForm({
 
   const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const router = useRouter();
-  
+
   // Translation hook
   const { t } = useTranslation();
-  
+
   // Tracking hooks
   const trackingParams = useTracking();
   const { engagement, trackFormInteraction } = useEngagementTracking();
@@ -131,10 +131,10 @@ export function LeadForm({
       setOtpData({ signature: data.signature, timestamp: data.timestamp });
       setStep("otp");
       setCountdown(60);
-      
+
       // Track OTP sent (micro-conversion)
       fbEvents.addToCart(loanType || productSlug);
-      
+
       // In development, log the OTP for testing
       if (data.otp) {
         console.log("Development OTP:", data.otp);
@@ -186,7 +186,7 @@ export function LeadForm({
         timestamp: data.timestamp,
       });
       setStep("details");
-      
+
       // Track OTP verified (micro-conversion)
       trackOTPVerifiedConversion();
     } catch (err) {
@@ -216,11 +216,11 @@ export function LeadForm({
     try {
       // Get tracking params for attribution
       const tracking = getTrackingParams();
-      
+
       // Calculate lead score
       const leadScore = calculateLeadScore(engagement);
       const leadTier = getLeadTier(leadScore);
-      
+
       // Set enhanced conversion data for Google Ads
       setEnhancedConversionData({
         phone,
@@ -270,14 +270,14 @@ export function LeadForm({
 
       // Track successful conversion
       trackLeadConversion(0, "INR");
-      
+
       // Redirect to thank you page with tracking params
       const thankYouParams = new URLSearchParams({
         loan_type: loanType,
         city: city || "",
         lead_id: data.leadId || "",
       });
-      
+
       router.push(`/thank-you?${thankYouParams.toString()}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to submit");
@@ -381,7 +381,7 @@ export function LeadForm({
 
   // Main form
   const isCompact = variant === "compact";
-  
+
   return (
     <div
       className={`bg-white rounded-2xl overflow-hidden ${isCompact ? '' : 'shadow-lg border border-gray-100'} ${className}`}
@@ -429,35 +429,40 @@ export function LeadForm({
           <label className="block text-xs lg:text-sm font-medium text-gray-700 mb-1">
             {t('form.phoneNumber')} <span className="text-red-500">*</span>
           </label>
-          <div className="relative">
-            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 lg:h-5 lg:w-5 text-gray-400" />
-            <input
-              type="tel"
-              inputMode="numeric"
-              value={phone}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                setPhone(value);
-                if (phoneVerified) setPhoneVerified(false);
-              }}
-              placeholder={t('form.phoneNumberPlaceholder')}
-              className="w-full pl-9 lg:pl-10 pr-20 lg:pr-24 py-3 lg:py-3 border border-gray-200 rounded-xl focus:border-brand-orange focus:outline-none transition-colors text-base lg:text-base min-h-[48px]"
-              required
-              disabled={phoneVerified}
-            />
-            {/* Verify / Verified Button */}
-            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+          {/* Changed from relative block to flex for cleaner layout */}
+          <div className="flex gap-2">
+            <div className="relative flex-1 min-w-0">
+              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 lg:h-5 lg:w-5 text-gray-400" />
+              <input
+                type="tel"
+                inputMode="numeric"
+                value={phone}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setPhone(value);
+                  if (phoneVerified) setPhoneVerified(false);
+                }}
+                placeholder={t('form.phoneNumberPlaceholder')}
+                className="w-full pl-9 lg:pl-10 pr-4 py-3 lg:py-3 border border-gray-200 rounded-xl focus:border-brand-orange focus:outline-none transition-colors text-base lg:text-base min-h-[48px]"
+                required
+                disabled={phoneVerified}
+              />
+            </div>
+            {/* Verify / Verified Button - Now adjacent to input */}
+            <div className="shrink-0">
               {phoneVerified ? (
-                <span className="flex items-center gap-1 text-green-600 text-sm font-medium">
-                  <CheckCircle className="h-5 w-5" />
-                  {t('common.verified')}
-                </span>
+                <div className="flex items-center justify-center h-full px-3 bg-green-50 border border-green-200 rounded-xl">
+                  <span className="flex items-center gap-1 text-green-600 text-sm font-medium">
+                    <CheckCircle className="h-5 w-5" />
+                    <span className="hidden sm:inline">{t('common.verified')}</span>
+                  </span>
+                </div>
               ) : (
                 <button
                   type="button"
                   onClick={handleSendOtp}
                   disabled={!isPhoneValid || isLoading}
-                  className="px-3 py-2 bg-brand-navy text-white text-sm font-medium rounded-lg hover:bg-brand-navy/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[40px]"
+                  className="h-full px-4 bg-brand-navy text-white text-sm font-medium rounded-xl hover:bg-brand-navy/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[48px] whitespace-nowrap"
                 >
                   {isLoading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -543,6 +548,7 @@ export function LeadForm({
         {/* Submit Button */}
         <button
           type="submit"
+          id="lead-form-submit"
           disabled={isLoading || !phoneVerified}
           className="w-full py-4 bg-brand-orange text-white font-semibold rounded-xl hover:bg-brand-orange/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 text-lg mt-6 shadow-lg hover:shadow-xl min-h-[56px]"
         >

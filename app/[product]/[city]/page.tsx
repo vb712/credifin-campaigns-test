@@ -8,7 +8,7 @@ import {
   replaceCityPlaceholder,
 } from "@/lib/products";
 import { Header, Footer } from "@/components/layout";
-import { HeroSection } from "@/components/hero-section";
+import { ProductHero } from "@/components/product-hero";
 import { LeadForm } from "@/components/lead-form";
 import { EMICalculator } from "@/components/emi-calculator";
 import { ProcessTimeline } from "@/components/process-timeline";
@@ -16,7 +16,6 @@ import { FAQAccordion } from "@/components/faq-accordion";
 import { DocumentsEligibility } from "@/components/documents-eligibility";
 import { FeatureCards } from "@/components/feature-cards";
 import { StickyCTA } from "@/components/sticky-cta";
-import { MobileFormDrawer } from "@/components/mobile-form-drawer";
 import { WhatsAppCTA } from "@/components/whatsapp-cta";
 import { FloatingCallButton } from "@/components/click-to-call";
 import { ExitIntentPopup } from "@/components/exit-intent-popup";
@@ -126,16 +125,25 @@ export default async function ProductCityPage({ params }: PageProps) {
 
   const formattedCity = formatCity(city);
 
-  // Replace {city} placeholders in content
-  const heroText = replaceCityPlaceholder(product.heroText, city);
-  const heroSubtext = replaceCityPlaceholder(product.heroSubtext, city);
-  
+  // Prepare content for both languages with city replacement
+  const contentEn = {
+    heroText: replaceCityPlaceholder(product.heroText, city),
+    heroSubtext: replaceCityPlaceholder(product.heroSubtext, city),
+    displayName: `${product.displayName} in ${formattedCity}`,
+  };
+
+  const contentHi = {
+    heroText: productHi?.heroText ? replaceCityPlaceholder(productHi.heroText, city) : contentEn.heroText,
+    heroSubtext: productHi?.heroSubtext ? replaceCityPlaceholder(productHi.heroSubtext, city) : contentEn.heroSubtext,
+    displayName: productHi?.displayName || contentEn.displayName,
+  };
+
   // FAQs for both languages
   const faqsEn = product.faqs.map((faq) => ({
     question: replaceCityPlaceholder(faq.question, city),
     answer: replaceCityPlaceholder(faq.answer, city),
   }));
-  
+
   const faqsHi = productHi?.faqs?.map((faq) => ({
     question: replaceCityPlaceholder(faq.question, city),
     answer: replaceCityPlaceholder(faq.answer, city),
@@ -146,7 +154,7 @@ export default async function ProductCityPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "FinancialProduct",
     name: `${product.displayName} in ${formattedCity}`,
-    description: heroSubtext,
+    description: contentEn.heroSubtext,
     provider: {
       "@type": "FinancialService",
       name: "Credifin",
@@ -181,7 +189,7 @@ export default async function ProductCityPage({ params }: PageProps) {
       <ReviewSchema productName={`${product.displayName} in ${formattedCity}`} />
       <LocalBusinessSchema city={formattedCity} />
       <FAQSchema faqs={faqsEn} />
-      <BreadcrumbSchema 
+      <BreadcrumbSchema
         items={[
           { name: "Home", url: "https://campaigns.credif.in" },
           { name: product.displayName, url: `https://campaigns.credif.in/${productSlug}` },
@@ -190,83 +198,65 @@ export default async function ProductCityPage({ params }: PageProps) {
       />
 
       <Header />
-      
-      {/* Trust Strip */}
-      <TestimonialStrip />
+
+      {/* Helper for hydration matching if needed, though replaced in layout */}
 
       <main className="min-h-screen bg-gray-50 pb-20 md:pb-0">
-        {/* Hero Section */}
-        <HeroSection
-          title={heroText}
-          subtitle={heroSubtext}
-          interestRate={product.interestRate}
+        {/* Mobile-First Hero with Form (Matches Product Page) */}
+        <ProductHero
+          product={product}
           productSlug={productSlug}
-          features={product.features}
+          contentEn={contentEn}
+          contentHi={contentHi}
         />
 
-        {/* Main Content */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Left Column - Main Content */}
-            <div className="lg:col-span-2 space-y-8">
-              {/* Process Timeline */}
-              <ProcessTimeline />
+        {/* Main Content - Single Column */}
+        <div className="container mx-auto px-4 py-8 lg:py-12">
+          <div className="space-y-8 max-w-4xl mx-auto">
+            {/* Process Timeline */}
+            <ProcessTimeline />
 
-              {/* EMI Calculator */}
-              <EMICalculator
-                minAmount={product.minAmount}
-                maxAmount={product.maxAmount}
-                minTenure={product.minTenure}
-                maxTenure={product.maxTenure}
-                defaultRate={parseFloat(product.interestRate)}
-                productName={product.displayName}
-                productNameHi={productHi?.displayName || product.displayName}
-              />
+            {/* EMI Calculator */}
+            <EMICalculator
+              minAmount={product.minAmount}
+              maxAmount={product.maxAmount}
+              minTenure={product.minTenure}
+              maxTenure={product.maxTenure}
+              defaultRate={parseFloat(product.interestRate)}
+              productName={product.displayName}
+              productNameHi={productHi?.displayName || product.displayName}
+            />
 
-              {/* Features */}
-              <FeatureCards 
-                features={product.features} 
-                featuresHi={productHi?.features || product.features}
-              />
+            {/* Features */}
+            <FeatureCards
+              features={product.features}
+              featuresHi={productHi?.features || product.features}
+            />
 
-              {/* Documents & Eligibility */}
-              <DocumentsEligibility
-                eligibility={product.eligibility}
-                documents={product.documents}
-                eligibilityHi={productHi?.eligibility || product.eligibility}
-                documentsHi={productHi?.documents || product.documents}
-              />
+            {/* Documents & Eligibility */}
+            <DocumentsEligibility
+              eligibility={product.eligibility}
+              documents={product.documents}
+              eligibilityHi={productHi?.eligibility || product.eligibility}
+              documentsHi={productHi?.documents || product.documents}
+            />
 
-              {/* FAQs */}
-              <FAQAccordion faqsEn={faqsEn} faqsHi={faqsHi} />
-            </div>
+            {/* FAQs */}
+            <FAQAccordion faqsEn={faqsEn} faqsHi={faqsHi} />
 
-            {/* Right Column - Lead Form (Sticky on desktop, hidden on mobile since we have drawer) */}
-            <div className="hidden lg:block lg:col-span-1">
-              <div
-                id="lead-form"
-                className="lg:sticky lg:top-20"
-              >
-                <LeadForm
-                  productSlug={productSlug}
-                  city={city}
-                />
-              </div>
-            </div>
+            {/* Testimonials Section - Kept as requested for Delhi specificity */}
+            <Testimonials
+              title={`Trusted by Thousands in ${formattedCity}`}
+              subtitle="See why customers choose Credifin for their loan needs"
+            />
           </div>
         </div>
-        
-        {/* Testimonials Section */}
-        <Testimonials 
-          title={`Trusted by Thousands in ${formattedCity}`}
-          subtitle="See why customers choose Credifin for their loan needs"
-        />
       </main>
 
       <Footer />
 
       {/* WhatsApp Floating CTA */}
-      <WhatsAppCTA 
+      <WhatsAppCTA
         productName={product.displayName}
         city={formattedCity}
       />
@@ -274,16 +264,14 @@ export default async function ProductCityPage({ params }: PageProps) {
       {/* Floating Call Button for Mobile */}
       <FloatingCallButton phoneNumber="8800123456" />
 
-      {/* Mobile Form Drawer - Slides up from bottom */}
-      <MobileFormDrawer 
-        productSlug={productSlug}
-        city={city}
-        ctaText={`Apply for ${product.displayName}`}
-        triggerScrollPercent={25}
+      {/* Sticky CTA for Mobile (Matches Product Page) */}
+      <StickyCTA
+        textEn={`Apply for ${product.displayName}`}
+        textHi={`${productHi?.displayName || product.displayName} के लिए आवेदन करें`}
       />
 
       {/* Exit Intent Popup */}
-      <ExitIntentPopup 
+      <ExitIntentPopup
         productSlug={productSlug}
         city={city}
         headline="Wait! Special Offer for You"

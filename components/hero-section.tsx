@@ -22,7 +22,7 @@ export function HeroSection({
   const { t } = useTranslation();
 
   return (
-    <section className="relative bg-gradient-to-br from-brand-navy via-brand-navy to-brand-navy/90 overflow-hidden">
+    <section id="product-hero" className="relative bg-gradient-to-br from-brand-navy via-brand-navy to-brand-navy/90 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div

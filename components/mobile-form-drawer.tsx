@@ -30,7 +30,7 @@ export function MobileFormDrawer({
   useEffect(() => {
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
+
       // After scrolling past trigger point, add extra emphasis
       if (scrollPercent > triggerScrollPercent && !hasAutoShown) {
         setHasAutoShown(true);
@@ -48,12 +48,12 @@ export function MobileFormDrawer({
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
     };
-    
+
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden"; // Prevent background scroll
     }
-    
+
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
@@ -79,33 +79,51 @@ export function MobileFormDrawer({
     setShowPulse(false);
   };
 
+  // Visibility logic to avoid Double CTA with Hero
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsHeroVisible(entry.isIntersecting);
+    });
+
+    // Slight delay to ensure DOM is ready and hydration is complete
+    const timer = setTimeout(() => {
+      const hero = document.getElementById("product-hero");
+      if (hero) observer.observe(hero);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <>
-      {/* Sticky CTA Bar - Only visible on mobile when drawer is closed */}
-      <div 
-        className={`md:hidden fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ${
-          isOpen ? "translate-y-full" : "translate-y-0"
-        }`}
+      {/* Sticky CTA Bar - Only visible on mobile when drawer is closed AND hero is not visible */}
+      <div
+        className={`md:hidden fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ${isOpen || isHeroVisible ? "translate-y-full" : "translate-y-0"
+          }`}
       >
         {/* Gradient fade effect above the bar */}
         <div className="h-6 bg-gradient-to-t from-white to-transparent" />
-        
+
         <div className="bg-white border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] px-4 py-3 safe-area-bottom">
           <button
             onClick={handleOpen}
-            className={`w-full py-4 bg-brand-orange text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-lg shadow-lg relative overflow-hidden ${
-              showPulse ? "animate-pulse-subtle" : ""
-            }`}
+            className={`w-full py-4 bg-brand-orange text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-lg shadow-lg relative overflow-hidden ${showPulse ? "animate-pulse-subtle" : ""
+              }`}
           >
             {/* Shimmer effect */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer" />
-            
+
             <span className="relative flex items-center gap-2">
               {buttonText}
               <ChevronUp className="h-5 w-5" />
             </span>
           </button>
-          
+
           {/* Quick trust indicators */}
           <div className="flex items-center justify-center gap-4 mt-2 text-xs text-gray-500">
             <span>✓ {t('trust.noSpam')}</span>
@@ -117,18 +135,16 @@ export function MobileFormDrawer({
 
       {/* Backdrop overlay */}
       <div
-        className={`md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         aria-hidden="true"
       />
 
       {/* Drawer */}
       <div
         ref={drawerRef}
-        className={`md:hidden fixed inset-x-0 bottom-0 z-50 transition-transform duration-300 ease-out ${
-          isOpen ? "translate-y-0" : "translate-y-full"
-        }`}
+        className={`md:hidden fixed inset-x-0 bottom-0 z-50 transition-transform duration-300 ease-out ${isOpen ? "translate-y-0" : "translate-y-full"
+          }`}
         role="dialog"
         aria-modal="true"
         aria-label="Application form"
